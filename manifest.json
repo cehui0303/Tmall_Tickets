@@ -1,0 +1,16 @@
+{
+  "manifest_version": 2,
+  "name": "Tmall-tickets",
+  "version": "1.0",
+  "description": "天猫超市抢购茅台",
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://chaoshi.detail.tmall.com/*","https://buy.damai.cn/*"],
+      "js": ["maotai.js"],
+	  "run_at": "document_idle"
+    }
+  ]
+}
