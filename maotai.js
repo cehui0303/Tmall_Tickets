@@ -70,9 +70,14 @@ function submitOrder(){
 
 
 //目标时间
-	var dDate = new Date();
-	//dDate.setHours(21,39,0);
-	dDate.setSeconds( dDate.getSeconds() + 10 );
+	var dDate = new Date();  //10点和22点开抢
+	if( dDate.getHours() < 10 ){
+		dDate.setHours(9,59,59.2);
+	}else{
+		dDate.setHours(21,59,59.2);
+	}
+	
+	//dDate.setSeconds( dDate.getSeconds() + 10 );
 	
 //进入时间判断循环
 function enterTimeCheckLoop(callback){
@@ -85,14 +90,18 @@ function enterTimeCheckLoop(callback){
 	
 	console.log(diff);
 	
-	if(diff < 600 ) {
+	if(diff < - 900 ){
+		
+		console.log('时间过了！');
+		
+	}else if(diff < 500 ) {
 
 		callback && callback();
 		
 		console.log('时间到了！！！');
 		
 	}else{
-		setTimeout(function(){ enterTimeCheckLoop(callback);},500);
+		setTimeout(function(){ enterTimeCheckLoop(callback);},400);
 		
 		//console.log('--');
 	}
